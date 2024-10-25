@@ -860,8 +860,7 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-
-  -  sequence:
+  - sequence:
     - metadata: {}
       data:
         filename: /config/www/tmp/snapshot-{{camera}}1.jpg
@@ -898,7 +897,6 @@ action:
     - metadata: {}
       data:
         prompt: {{ai_prompt}}
-        
         image_filename:
           - /config/www/tmp/snapshot-{{camera}}1.jpg
           - /config/www/tmp/snapshot-{{camera}}2.jpg
