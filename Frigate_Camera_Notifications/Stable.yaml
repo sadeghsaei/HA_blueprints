@@ -860,42 +860,13 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  - sequence:
-    - service: camera.snapshot
-      metadata: {}
-      data:
-        filename: /config/www/snapshots/{{camera}}_snapshot1.jpg
-      target:
-        device_id: camera_id
-      enabled: true
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 1
-        milliseconds: 0
-      enabled: true
-    - service: camera.snapshot
-      metadata: {}
-      data:
-        filename: /config/www/snapshots/{{camera}}_snapshot2.jpg
-      target:
-        device_id: camera_id
-      enabled: true
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 1
-        milliseconds: 0
-      enabled: true
-    - service: camera.snapshot
-      metadata: {}
-      data:
-        filename: /config/www/snapshots/{{camera}}_snapshot3.jpg
-      target:
-        device_id: camera_id
-      enabled: true
-    
-
+  - service: camera.snapshot
+    metadata: {}
+    data:
+      filename: /config/www/snapshots/{{camera}}_snapshot1.jpg
+    target:
+      device_id: camera_id
+    enabled: true
   - choose:
       - alias: "Silence New Object Notifications"
         conditions:
