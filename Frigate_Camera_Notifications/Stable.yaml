@@ -891,9 +891,9 @@ action:
       data:
         prompt: "{{ai_prompt}}"
         image_filename:
-          - /config/www/tmp/snapshot-driveway1.jpg
-          - /config/www/tmp/snapshot-driveway2.jpg
-          - /config/www/tmp/snapshot-driveway3.jpg
+          - /config/www/tmp/snapshot-{{camera_name}}1.jpg
+          - /config/www/tmp/snapshot-{{camera_name}}2.jpg
+          - /config/www/tmp/snapshot-{{camera_name}}3.jpg
       response_variable: generated_content
 
   - choose:
