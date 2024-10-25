@@ -862,10 +862,9 @@ variables:
 action:
   - action:
     - service: camera.snapshot
+      entity_id: input_camera
       data:
-        filename: /tmp/snapshots/entranceSnapshot.jpg
-      target:
-        entity_id: input_camera
+        filename: /tmp/snapshots/entranceSnapshot.jpg        
   - choose:
       - alias: "Silence New Object Notifications"
         conditions:
