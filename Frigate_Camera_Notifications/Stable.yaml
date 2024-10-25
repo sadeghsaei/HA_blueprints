@@ -78,62 +78,53 @@ blueprint:
   source_url: https://github.com/SgtBatten/HA_blueprints/blob/main/Frigate_Camera_Notifications/Stable.yaml
   
   sequence:
-        - metadata: {}
+      - service: camera.snapshot
+        metadata: {}
         data:
           filename: /config/www/tmp/snapshot-driveway1.jpg
         target:
           device_id: 6dbd624c7e89b9ad063ec15768611864
         enabled: true
-        action: camera.snapshot
-        - delay:
+      - delay:
           hours: 0
           minutes: 0
-          seconds: 1
-          milliseconds: 0
+          seconds: 0
+          milliseconds: 500
         enabled: true
-        - metadata: {}
+      - service: camera.snapshot
+        metadata: {}
         data:
           filename: /config/www/tmp/snapshot-driveway2.jpg
         target:
           device_id: 6dbd624c7e89b9ad063ec15768611864
         enabled: true
-        action: camera.snapshot
-        - delay:
+      - delay:
           hours: 0
           minutes: 0
-          seconds: 1
-          milliseconds: 0
+          seconds: 0
+          milliseconds: 500
         enabled: true
-        - metadata: {}
+      - service: camera.snapshot
+        metadata: {}
         data:
           filename: /config/www/tmp/snapshot-driveway3.jpg
         target:
           device_id: 6dbd624c7e89b9ad063ec15768611864
         enabled: true
-        action: camera.snapshot
-        - metadata: {}
+      - service: google_generative_ai_conversation.generate_content
+        metadata: {}
         data:
           prompt: >-
-            A person has been detected, compare and very briefly describe what you
-            see in the following sequence of images from my driveway camera taken in
-            3 seconds, each second one image. Do not describe stationary objects or
-            buildings. Your message needs to be short enough to fit in a phone
-            notification.
-            more info:
-            The location is Waterloo Ontario Canada.
-            The Honda CRV 2010 in Black parked in the driveway with the plate number
-            CTJE807 is mine.
-            The camera has night vision, so when there is not enough light at the
-            scene, the night vision will be enabled and the colors may vary from
-            actual.
-            You can describe the scene using all these info, like the time of day,
-            the weather, ... but not necessarily!
+            A person has been detected, compare and very briefly describe what you see
+            in the following sequence of images from my driveway camera.
+            Describe the person in detail. Do not describe stationary objects or
+            buildings. Your message needs to be short enough to fit in a phone notification. 
+            The message should be funny and joking about the scene and can be insulting. 
           image_filename:
             - /config/www/tmp/snapshot-driveway1.jpg
             - /config/www/tmp/snapshot-driveway2.jpg
             - /config/www/tmp/snapshot-driveway3.jpg
         response_variable: generated_content
-        action: google_generative_ai_conversation.generate_content
   
   input:
     camera:
@@ -200,8 +191,6 @@ blueprint:
           selector:
             select:
               options:
-                - label: "AI Generated"
-                  value: "{{generated_content['text']}}"
                 - label: "Default:   e.g., A Person was detected on the Side camera."
                   value: "A {{ label }} {{ 'is loitering' if loitering else 'was detected' }} on the {{ camera_name }} camera."
                 - label: "Short:     e.g., Person detected - Side"
