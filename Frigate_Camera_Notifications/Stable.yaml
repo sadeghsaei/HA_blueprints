@@ -140,7 +140,7 @@ blueprint:
           name: Camera ID
           description: Type in the Camera ID.
 
-          default: ""
+          default: "Change"
         message:
           name: Notification Message
           description: |
