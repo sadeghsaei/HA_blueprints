@@ -860,7 +860,7 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  - action:
+  action:
     - service: camera.snapshot
       entity_id: input_camera
       data:
