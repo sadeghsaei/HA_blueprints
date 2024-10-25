@@ -856,9 +856,9 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: "/config/www/tmp/snapshot-{{camera}}1.jpg"
+        filename: "/config/www/tmp/snapshot-{{ camera }}1.jpg"
       target:
-        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
+        device_id: {{ device_id(input_camera) }}
       enabled: true
     - delay:
         hours: 0
@@ -869,9 +869,9 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: /config/www/tmp/snapshot-{{camera}}2.jpg
+        filename: /config/www/tmp/snapshot-{{ camera }}2.jpg
       target:
-        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
+        device_id: {{ device_id(input_camera) }}
       enabled: true
     - delay:
         hours: 0
@@ -882,18 +882,18 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: /config/www/tmp/snapshot-{{camera}}3.jpg
+        filename: /config/www/tmp/snapshot-{{ camera }}3.jpg
       target:
-        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
+        device_id: {{ device_id(input_camera) }}
       enabled: true
     - service: google_generative_ai_conversation.generate_content
       metadata: {}
       data:
         prompt: "{{ai_prompt}}"
         image_filename:
-          - /config/www/tmp/snapshot-{{camera}}1.jpg
-          - /config/www/tmp/snapshot-{{camera}}2.jpg
-          - /config/www/tmp/snapshot-{{camera}}3.jpg
+          - /config/www/tmp/snapshot-{{ camera }}1.jpg
+          - /config/www/tmp/snapshot-{{ camera }}2.jpg
+          - /config/www/tmp/snapshot-{{ camera }}3.jpg
       response_variable: generated_content
 
   - choose:
