@@ -860,13 +860,12 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  - service: camera.snapshot
-    metadata: {}
-    data:
-      filename: /config/www/tmp/test_snapshot.jpg
-    target:
-      device_id: camera_id
-    enabled: true
+  - action:
+    - service: camera.snapshot
+      data:
+        filename: /tmp/snapshots/entranceSnapshot.jpg
+      target:
+        entity_id: input_camera
   - choose:
       - alias: "Silence New Object Notifications"
         conditions:
