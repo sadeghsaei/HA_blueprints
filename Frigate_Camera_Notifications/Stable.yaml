@@ -856,7 +856,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: "/config/www/tmp/snapshot-{{camera_name}}1.jpg"
+        filename: "/config/www/tmp/snapshot-{{camera}}1.jpg"
       target:
         device_id: device_id(device_name({{input_camera}}))
       enabled: true
@@ -869,7 +869,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: /config/www/tmp/snapshot-{{camera_name}}2.jpg
+        filename: /config/www/tmp/snapshot-{{camera}}2.jpg
       target:
         device_id: device_id(device_name({{input_camera}}))
       enabled: true
@@ -882,7 +882,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: /config/www/tmp/snapshot-{{camera_name}}3.jpg
+        filename: /config/www/tmp/snapshot-{{camera}}3.jpg
       target:
         device_id: device_id(device_name({{input_camera}}))
       enabled: true
