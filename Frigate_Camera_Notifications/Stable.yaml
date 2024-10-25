@@ -863,13 +863,13 @@ variables:
 action:
   choose:
     - conditions: "{{ai_enabled}}"
-      sequence:
+      - sequence:
         - service: camera.snapshot
           metadata: {}
           data:
             filename: "/config/www/tmp/snapshot-{{ camera }}1.jpg"
           target:
-            device_id: camera_id
+              device_id: camera_id
           enabled: true
         - delay:
             hours: 0
