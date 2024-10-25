@@ -146,6 +146,8 @@ blueprint:
                   value: "A {{ label }} {{ 'is loitering' if loitering else 'was detected' }} on the {{ camera_name }} camera."
                 - label: "Short:     e.g., Person detected - Side"
                   value: "{{ label }} detected - {{ camera_name }}"
+                - label: "AI Generated"
+                  value: "{{generated_content['text']}}"
                 - label: "Short with a timestamp HH:MM"
                   value: "{{ label }} detected - {{ camera_name }} at {{event['after']['start_time']|timestamp_custom('%H:%M')}}"
                 - label: "Long:      e.g., A Person was detected on the Side camera in the driveway."
