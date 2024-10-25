@@ -896,7 +896,7 @@ action:
       action: camera.snapshot
     - metadata: {}
       data:
-        prompt: {{ai_prompt}}
+        prompt: "{{ai_prompt}}"
         image_filename:
           - /config/www/tmp/snapshot-{{camera}}1.jpg
           - /config/www/tmp/snapshot-{{camera}}2.jpg
