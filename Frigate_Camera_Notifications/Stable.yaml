@@ -861,51 +861,49 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  - choose:
-    - conditions: "{{ai_enabled}}"
-      - sequence:
-        - service: camera.snapshot
-          metadata: {}
-          data:
-            filename: "/config/www/tmp/snapshot-{{ camera }}1.jpg"
-          target:
-            device_id: camera_id
-          enabled: true
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 1
-            milliseconds: 0
-          enabled: true
-        - service: camera.snapshot
-          metadata: {}
-          data:
-            filename: /config/www/tmp/snapshot-{{ camera }}2.jpg
-          target:
-            device_id: camera_id
-          enabled: true
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 1
-            milliseconds: 0
-          enabled: true
-        - service: camera.snapshot
-          metadata: {}
-          data:
-            filename: /config/www/tmp/snapshot-{{ camera }}3.jpg
-          target:
-            device_id: camera_id
-          enabled: true
-        - service: google_generative_ai_conversation.generate_content
-          metadata: {}
-          data:
-            prompt: "{{ai_prompt}}"
-            image_filename:
-              - /config/www/tmp/snapshot-{{ camera }}1.jpg
-              - /config/www/tmp/snapshot-{{ camera }}2.jpg
-              - /config/www/tmp/snapshot-{{ camera }}3.jpg
-          response_variable: generated_content
+  - sequence:
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: "/config/www/tmp/snapshot-{{ camera }}1.jpg"
+      target:
+        device_id: camera_id
+      enabled: true
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: /config/www/tmp/snapshot-{{ camera }}2.jpg
+      target:
+        device_id: camera_id
+      enabled: true
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+        milliseconds: 0
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: /config/www/tmp/snapshot-{{ camera }}3.jpg
+      target:
+        device_id: camera_id
+      enabled: true
+    - service: google_generative_ai_conversation.generate_content
+      metadata: {}
+      data:
+        prompt: "{{ai_prompt}}"
+        image_filename:
+          - /config/www/tmp/snapshot-{{ camera }}1.jpg
+          - /config/www/tmp/snapshot-{{ camera }}2.jpg
+          - /config/www/tmp/snapshot-{{ camera }}3.jpg
+      response_variable: generated_content
 
   - choose:
       - alias: "Silence New Object Notifications"
