@@ -809,7 +809,7 @@ variables:
   input_camera: !input camera
   camera: "{{ input_camera | regex_replace('^camera\\.', '') }}"
   camera_name: "{{ camera | replace('_', ' ') | title }}"
-  camera_id: "{{ device_id(camera) }}"
+  camera_id: "{{ device_id(input_camera) }}"
   input_base_url: !input base_url
   base_url: "{{ input_base_url.rstrip('/')}}"
   update_sub_label: !input update_sub_label
@@ -852,6 +852,51 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
+  - sequence:
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: ./www/snapshots/driveway1_snapshot1.jpg
+      target:
+        device_id: ***YOUR_CAMERAS_DEVICE_ID***
+      enabled: true
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 500
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: ./www/snapshots/driveway1_snapshot2.jpg
+      target:
+        device_id: ***YOUR_CAMERAS_DEVICE_ID***
+      enabled: true
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 500
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: ./www/snapshots/driveway1_snapshot3.jpg
+      target:
+        device_id: ***YOUR_CAMERAS_DEVICE_ID***
+      enabled: true
+    - service: google_generative_ai_conversation.generate_content
+      metadata: {}
+      data:
+        prompt: ai_prompt
+        image_filename:
+          - ./www/snapshots/driveway1_snapshot1.jpg
+          - ./www/snapshots/driveway1_snapshot2.jpg
+          - ./www/snapshots/driveway1_snapshot3.jpg
+      response_variable: generated_content
+
+
   - choose:
       - alias: "Silence New Object Notifications"
         conditions:
