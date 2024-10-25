@@ -810,7 +810,7 @@ variables:
   input_camera: !input camera
   camera: "{{ input_camera | regex_replace('^camera\\.', '') }}"
   camera_name: "{{ camera | replace('_', ' ') | title }}"
-  camera_id: "{{ device_id(input_camera) }}"
+  camera_id: device_id(!input camera)
   input_base_url: !input base_url
   base_url: "{{ input_base_url.rstrip('/')}}"
   update_sub_label: !input update_sub_label
@@ -858,7 +858,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-{{camera}}1.jpg
       target:
-        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
+        device_id: camera_id
       enabled: true
     - delay:
         hours: 0
