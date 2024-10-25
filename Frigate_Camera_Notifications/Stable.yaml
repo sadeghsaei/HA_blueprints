@@ -855,8 +855,8 @@ action:
     - delay:
         hours: 0
         minutes: 0
-        seconds: 0
-        milliseconds: 500
+        seconds: 1
+        milliseconds: 0
       enabled: true
     - service: camera.snapshot
       metadata: {}
@@ -868,8 +868,8 @@ action:
     - delay:
         hours: 0
         minutes: 0
-        seconds: 0
-        milliseconds: 500
+        seconds: 1
+        milliseconds: 0
       enabled: true
     - service: camera.snapshot
       metadata: {}
