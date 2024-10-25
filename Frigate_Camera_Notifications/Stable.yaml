@@ -126,14 +126,14 @@ blueprint:
       icon: mdi:bell
       collapsed: true
       input:
-        aiprompt:
-          name: AI prompt
-          description: The prompt to send to google.
-
-          default: ""
         title:
           name: Notification Title (Optional)
           description: The title of the notification.
+
+          default: ""
+        aiprompt:
+          name: AI prompt
+          description: The prompt to send to google.
 
           default: ""
         message:
