@@ -894,16 +894,7 @@ action:
       target:
         device_id: camera_id
       enabled: true
-    - service: google_generative_ai_conversation.generate_content
-      metadata: {}
-      data:
-        prompt: "{{ai_prompt}}"
-       
-        image_filename:
-          - /config/www/snapshots/{{camera}}_snapshot1.jpg
-          - /config/www/snapshots/{{camera}}_snapshot2.jpg
-          - /config/www/snapshots/{{camera}}_snapshot3.jpg
-      response_variable: generated_content
+    
 
   - choose:
       - alias: "Silence New Object Notifications"
