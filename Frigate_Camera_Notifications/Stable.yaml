@@ -126,7 +126,7 @@ blueprint:
       icon: mdi:bell
       collapsed: true
       input:
-        title:
+        aiprompt:
           name: AI prompt
           description: The prompt to send to google.
 
