@@ -77,7 +77,7 @@ blueprint:
   domain: automation
   source_url: https://github.com/SgtBatten/HA_blueprints/blob/main/Frigate_Camera_Notifications/Stable.yaml
   
-  sequence:
+  action:
       - service: camera.snapshot
         metadata: {}
         data:
