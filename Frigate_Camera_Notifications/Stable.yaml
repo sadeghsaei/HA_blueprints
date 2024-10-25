@@ -127,6 +127,11 @@ blueprint:
       collapsed: true
       input:
         title:
+          name: AI prompt
+          description: The prompt to send to google.
+
+          default: ""
+        title:
           name: Notification Title (Optional)
           description: The title of the notification.
 
