@@ -131,6 +131,13 @@ blueprint:
           description: The title of the notification.
 
           default: ""
+        aienabled:
+          name: Enable AI
+          description: Use Google Generative AI to generate customized notifications.
+          
+          default: false
+          selector:
+            boolean:
         aiprompt:
           name: AI prompt
           description: The prompt to send to google.
@@ -807,6 +814,7 @@ trigger:
     id: custom
 variables:
   ai_prompt: !input aiprompt
+  ai_enabled: !input aienabled
   input_camera: !input camera
   camera: "{{ input_camera | regex_replace('^camera\\.', '') }}"
   camera_name: "{{ camera | replace('_', ' ') | title }}"
