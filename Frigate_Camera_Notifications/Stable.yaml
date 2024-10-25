@@ -806,8 +806,8 @@ trigger:
       action: "custom-{{ camera }}"
     id: custom
 variables:
-  input_camera: !input camera
   ai_prompt: !input aiprompt
+  input_camera: !input camera
   camera: "{{ input_camera | regex_replace('^camera\\.', '') }}"
   camera_name: "{{ camera | replace('_', ' ') | title }}"
   input_base_url: !input base_url
