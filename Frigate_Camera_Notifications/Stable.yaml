@@ -863,7 +863,7 @@ action:
   - service: camera.snapshot
     metadata: {}
     data:
-      filename: /root/homeassistant/www/snapshots/snapshot1.jpg
+      filename: /config/www/tmp/test_snapshot.jpg
     target:
       device_id: camera_id
     enabled: true
