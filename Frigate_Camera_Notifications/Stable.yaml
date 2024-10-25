@@ -136,6 +136,11 @@ blueprint:
           description: The prompt to send to google.
 
           default: ""
+        devicecameraid:
+          name: Camera ID
+          description: What is the camera ID?
+
+          default: ""
         message:
           name: Notification Message
           description: |
@@ -810,6 +815,7 @@ variables:
   input_camera: !input camera
   camera: "{{ input_camera | regex_replace('^camera\\.', '') }}"
   camera_name: "{{ camera | replace('_', ' ') | title }}"
+  device_camera_id: !input devicecameraid
   input_base_url: !input base_url
   base_url: "{{ input_base_url.rstrip('/')}}"
   update_sub_label: !input update_sub_label
@@ -869,7 +875,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-{{camera}}2.jpg
       target:
-        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
+        device_id: {{device_camera_id}}
       enabled: true
     - delay:
         hours: 0
