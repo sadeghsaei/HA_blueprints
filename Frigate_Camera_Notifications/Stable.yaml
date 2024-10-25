@@ -844,7 +844,7 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  sequence:
+  - sequence:
     - service: camera.snapshot
       metadata: {}
       data:
