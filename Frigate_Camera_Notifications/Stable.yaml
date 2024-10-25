@@ -861,7 +861,7 @@ variables:
   debug: !input debug
 action:
 
-  sequence:
+  -  sequence:
     - metadata: {}
       data:
         filename: /config/www/tmp/snapshot-{{camera}}1.jpg
