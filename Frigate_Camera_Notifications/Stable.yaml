@@ -864,7 +864,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: ./www/snapshots/{{camera}}_snapshot1.jpg
+        filename: /config/www/snapshots/{{camera}}_snapshot1.jpg
       target:
         device_id: camera_id
       enabled: true
@@ -877,7 +877,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: ./www/snapshots/{{camera}}_snapshot2.jpg
+        filename: /config/www/snapshots/{{camera}}_snapshot2.jpg
       target:
         device_id: camera_id
       enabled: true
@@ -890,7 +890,7 @@ action:
     - service: camera.snapshot
       metadata: {}
       data:
-        filename: ./www/snapshots/{{camera}}_snapshot3.jpg
+        filename: /config/www/snapshots/{{camera}}_snapshot3.jpg
       target:
         device_id: camera_id
       enabled: true
@@ -900,9 +900,9 @@ action:
         prompt: "{{ai_prompt}}"
        
         image_filename:
-          - ./www/snapshots/{{camera}}_snapshot1.jpg
-          - ./www/snapshots/{{camera}}_snapshot2.jpg
-          - ./www/snapshots/{{camera}}_snapshot3.jpg
+          - /config/www/snapshots/{{camera}}_snapshot1.jpg
+          - /config/www/snapshots/{{camera}}_snapshot2.jpg
+          - /config/www/snapshots/{{camera}}_snapshot3.jpg
       response_variable: generated_content
 
   - choose:
