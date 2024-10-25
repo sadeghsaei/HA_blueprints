@@ -858,7 +858,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-driveway1.jpg
       target:
-        device_id: !input camera
+        device_id: input_camera
       enabled: true
     - delay:
         hours: 0
@@ -871,7 +871,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-driveway2.jpg
       target:
-        device_id: !input camera
+        device_id: input_camera
       enabled: true
     - delay:
         hours: 0
@@ -884,7 +884,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-driveway3.jpg
       target:
-        device_id: !input camera
+        device_id: input_camera
       enabled: true
     - service: google_generative_ai_conversation.generate_content
       metadata: {}
