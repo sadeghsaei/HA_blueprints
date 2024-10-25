@@ -861,7 +861,7 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-  choose:
+  - choose:
     - conditions: "{{ai_enabled}}"
       - sequence:
         - service: camera.snapshot
@@ -869,7 +869,7 @@ action:
           data:
             filename: "/config/www/tmp/snapshot-{{ camera }}1.jpg"
           target:
-              device_id: camera_id
+            device_id: camera_id
           enabled: true
         - delay:
             hours: 0
