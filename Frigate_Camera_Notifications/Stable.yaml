@@ -844,54 +844,54 @@ variables:
   tv_interrupt: !input tv_interrupt
   debug: !input debug
 action:
-
-  - service: camera.snapshot
-    metadata: {}
-    data:
-      filename: /config/www/tmp/snapshot-driveway1.jpg
-    target:
-      device_id: 6dbd624c7e89b9ad063ec15768611864
-    enabled: true
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 500
-    enabled: true
-  - service: camera.snapshot
-    metadata: {}
-    data:
-      filename: /config/www/tmp/snapshot-driveway2.jpg
-    target:
-      device_id: 6dbd624c7e89b9ad063ec15768611864
-    enabled: true
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 500
-    enabled: true
-  - service: camera.snapshot
-    metadata: {}
-    data:
-      filename: /config/www/tmp/snapshot-driveway3.jpg
-    target:
-      device_id: 6dbd624c7e89b9ad063ec15768611864
-    enabled: true
-  - service: google_generative_ai_conversation.generate_content
-    metadata: {}
-    data:
-      prompt: >-
-        A person has been detected, compare and very briefly describe what you see
-        in the following sequence of images from my driveway camera.
-        Describe the person in detail. Do not describe stationary objects or
-        buildings. Your message needs to be short enough to fit in a phone notification. 
-        The message should be funny and joking about the scene and can be insulting. 
-      image_filename:
-        - /config/www/tmp/snapshot-driveway1.jpg
-        - /config/www/tmp/snapshot-driveway2.jpg
-        - /config/www/tmp/snapshot-driveway3.jpg
-    response_variable: generated_content
+  sequence:
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: /config/www/tmp/snapshot-driveway1.jpg
+      target:
+        device_id: 6dbd624c7e89b9ad063ec15768611864
+      enabled: true
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 500
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: /config/www/tmp/snapshot-driveway2.jpg
+      target:
+        device_id: 6dbd624c7e89b9ad063ec15768611864
+      enabled: true
+    - delay:
+        hours: 0
+       minutes: 0
+        seconds: 0
+        milliseconds: 500
+      enabled: true
+    - service: camera.snapshot
+      metadata: {}
+      data:
+        filename: /config/www/tmp/snapshot-driveway3.jpg
+      target:
+        device_id: 6dbd624c7e89b9ad063ec15768611864
+      enabled: true
+    - service: google_generative_ai_conversation.generate_content
+      metadata: {}
+      data:
+        prompt: >-
+          A person has been detected, compare and very briefly describe what you see
+          in the following sequence of images from my driveway camera.
+          Describe the person in detail. Do not describe stationary objects or
+          buildings. Your message needs to be short enough to fit in a phone notification. 
+          The message should be funny and joking about the scene and can be insulting. 
+        image_filename:
+          - /config/www/tmp/snapshot-driveway1.jpg
+          - /config/www/tmp/snapshot-driveway2.jpg
+          - /config/www/tmp/snapshot-driveway3.jpg
+      response_variable: generated_content
 
   - choose:
       - alias: "Silence New Object Notifications"
