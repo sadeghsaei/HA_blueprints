@@ -858,7 +858,7 @@ action:
       data:
         filename: "/config/www/tmp/snapshot-{{camera}}1.jpg"
       target:
-        device_id: {{device_id}}
+        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
       enabled: true
     - delay:
         hours: 0
@@ -871,7 +871,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-{{camera}}2.jpg
       target:
-        device_id: {{device_id}}
+        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
       enabled: true
     - delay:
         hours: 0
@@ -884,7 +884,7 @@ action:
       data:
         filename: /config/www/tmp/snapshot-{{camera}}3.jpg
       target:
-        device_id: {{device_id}}
+        device_id: bd9cf02b3c6af3ccf28f66fe9f3f4829
       enabled: true
     - service: google_generative_ai_conversation.generate_content
       metadata: {}
